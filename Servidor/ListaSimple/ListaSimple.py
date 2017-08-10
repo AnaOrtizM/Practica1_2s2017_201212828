@@ -1,4 +1,4 @@
-from graphviz import Digraph
+from graphviz import Source
 from .NodoLS import NodoLS
 
 class ListaSimple(object):
@@ -7,6 +7,7 @@ class ListaSimple(object):
 		self.inicio = None
 		self.fin = None
 		self.indice = 0
+		self.grafo = ""
 		
 	def estaVacia(self):
 		if self.inicio == None:
@@ -75,7 +76,7 @@ class ListaSimple(object):
 				temp = temp.siguiente				
 
 	def graficar(self):
-		dot = Digraph(comment='Lista Simple',format='jpg',node_attr={'shape':'box'},name='Lista Simple')
+		"""dot = Digraph(comment='Lista Simple',format='jpg',node_attr={'shape':'box'},name='Lista Simple')
 		dot.graph_attr['rankdir']='UD'
 		dot  #doctest: +ELLIPSIS
 		temp = self.inicio
@@ -87,12 +88,33 @@ class ListaSimple(object):
 			print (temp.getIndice())
 			print (temp.getCarnet())
 			while temp != None:				
-				dot.node(str(temp.getIndice()), temp.getCarnet(), temp.getIP())
+				dot.node(str(temp.getIndice()), str(temp.getCarnet()), str(temp.getIP()))
 				if temp.siguiente != None:
-					dot.node(str(temp.siguiente.getIndice()), temp.siguiente.getCarnet(), temp.getIP())
+					dot.node(str(temp.siguiente.getIndice()), str(temp.siguiente.getCarnet()), str(temp.getIP()))
 					dot.edge(str(temp.getIndice()), str(temp.siguiente.getIndice()), constraint='false')
 				print (temp.getIndice())
 				print (temp.getCarnet())
 				temp = temp.siguiente
 			print(dot.source)
-			dot.render('test-output/ListaSimple', view = True)
+			dot.render('test-output/ListaSimple', view = True)"""
+		self.grafo = "digraph G {\n" + "graph [rankdir = TB];\n" + "node [shape = record,height=.1];  {\n"
+
+		if self.estaVacia() == True:
+			self.grafo += "\"ListaVacia\" [label = \"Lista Vacia\"]"
+		else:
+			temp = self.inicio
+			i = 0
+			while temp != None:
+				self.grafo += "\"" + str(i) + "\" [label = \"" + "Carnet: " +str(temp.getCarnet())
+				self.grafo += "\\nIP: " + str(temp.getIP()) + "\"];\n"
+				if i > 0:
+					self.grafo +=  "\"" + str(i - 1) + "\" -> \"" + str(i) + "\" ;\n"
+
+				temp = temp.siguiente
+				i = i + 1
+
+		self.grafo += "} labelloc=\"t\"; label=\" LISTA SIMPLE\";}"
+		print(self.grafo)
+		src = Source(self.grafo)
+		src.format = "png"
+		src.render('test-output/ListaSimple', view = True)

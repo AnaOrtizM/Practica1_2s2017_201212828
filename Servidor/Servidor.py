@@ -5,19 +5,21 @@ from flask import Flask, request, Response
 from ListaSimple.ListaSimple import ListaSimple
 from Cola.Cola import Cola
 from Pila.Pila import Pila
-from Matriz.Matriz import Matriz
 #*********************************************#
-app = Flask('Practica2_Servidor')
+app = Flask('Practica1_Servidor')
 
 #********** INSTANCIAMIENTO DE CLASES **********#
 ls = ListaSimple()
 cl = Cola()
 pl = Pila()
-mt = Matriz()
 #***********************************************#
 
 #********** METODOS LISTA SIMPLE **********#
-@app.route('/insertarLista',methods=['POST']) 
+ls.insertarFinal("201212828","192.168.0.1","255.255.255.0")
+ls.insertarFinal("201213295","192.168.0.2","255.255.255.0")
+ls.mostrar()
+ls.graficar()
+"""@app.route('/insertarLista',methods=['POST']) 
 #@app.route('/insertarLista') 
 def insertarLista():
 	#parametro = str(request.args['palabra'])
@@ -46,11 +48,11 @@ def eliminarLista():
 #@app.route('/eliminarLista') 
 def graficarLista():
 	ls.graficar()
-	return "Lista Graficada" 
+	return "Lista Graficada" """
 #******************************************#
 
 #************* METODOS  COLA  *************#
-@app.route('/queueCola',methods=['POST']) 
+"""@app.route('/queueCola',methods=['POST']) 
 #@app.route('/insertarLista') 
 def queueCola():
 	#parametro = str(request.args['palabra'])
@@ -99,25 +101,8 @@ def popPila():
 #@app.route('/eliminarLista') 
 def graficarPila():
 	pl.graficar()
-	return "Pila Graficada" 
+	return "Pila Graficada" """
 #******************************************#
-
-#************ METODOS  MATRIZ  ************#
-@app.route('/insertarMatriz',methods=['POST']) 
-#@app.route('/insertarLista') 
-def insertarMatriz():
-	#parametro = str(request.args['palabra'])
-	parametro = str(request.form['dato'])
-	mt.insertar(str(parametro))
-	return "Dato insertado con exito!"	
-
-@app.route('/graficarMatriz',methods=['POST']) 
-#@app.route('/eliminarLista') 
-def graficarMatriz():
-	mt.graficar()
-	return "Matriz Graficada" 
-#******************************************#
-	
 if __name__ == "__main__":
 	print("Servidor iniciado...")
 	app.run(debug=True, host='127.0.0.1')

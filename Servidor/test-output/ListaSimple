@@ -1,0 +1,7 @@
+digraph G {
+graph [rankdir = TB];
+node [shape = record,height=.1];  {
+"0" [label = "Carnet: 201212828\nIP: 192.168.0.1"];
+"1" [label = "Carnet: 201213295\nIP: 192.168.0.2"];
+"0" -> "1" ;
+} labelloc="t"; label=" LISTA SIMPLE";}
