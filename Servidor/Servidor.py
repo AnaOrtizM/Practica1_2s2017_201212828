@@ -3,6 +3,7 @@ from flask import Flask, request, Response
 #********** IMPORTACIONES DE CLASES **********#
 
 from ListaSimple.ListaSimple import ListaSimple
+from ListaDoble.ListaDoble import ListaDoble
 from Cola.Cola import Cola
 from Pila.Pila import Pila
 #*********************************************#
@@ -10,6 +11,7 @@ app = Flask('Practica1_Servidor')
 
 #********** INSTANCIAMIENTO DE CLASES **********#
 ls = ListaSimple()
+ld = ListaDoble()
 cl = Cola()
 pl = Pila()
 #***********************************************#
@@ -49,6 +51,13 @@ def eliminarLista():
 def graficarLista():
 	ls.graficar()
 	return "Lista Graficada" """
+#******************************************#
+
+#*********** METODOS LISTA DOBLE **********#
+ld.insertarFinal("201214505", "192.168.0.3", "(2+2)")
+ld.insertarFinal("201348796", "192.168.0.10", "(4*5)")
+ld.mostrarInicioFin()
+ld.graficar()
 #******************************************#
 
 #************* METODOS  COLA  *************#

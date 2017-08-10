@@ -1,7 +1,7 @@
 from graphviz import Source
-from .NodoLDU import NodoLDU
+from .NodoLD import NodoLD
 
-class ListaDobleUsuarios(object):
+class ListaDoble(object):
 	
 	def __init__(self):
 		self.inicio = None
@@ -15,8 +15,8 @@ class ListaDobleUsuarios(object):
 		else:
 			return False
 
-	def insertarInicio(self, carnet, ip):
-		nuevo = NodoLDU(self.indice, carnet, ip)
+	def insertarInicio(self, carnet, ip, mensaje):
+		nuevo = NodoLD(self.indice, carnet, ip, mensaje)
 		
 		if self.estaVacia() == True:
 			self.inicio = self.fin = nuevo
@@ -27,8 +27,8 @@ class ListaDobleUsuarios(object):
 
 		self.indice += 1
 
-	def insertarFinal(self, carnet, ip):
-		nuevo = NodoLDU(self.indice, carnet, ip)
+	def insertarFinal(self, carnet, ip, mensaje):
+		nuevo = NodoLD(self.indice, carnet, ip, mensaje)
 
 		if self.estaVacia() == True:
 			self.fin = self.inicio = nuevo
@@ -58,7 +58,7 @@ class ListaDobleUsuarios(object):
 		else:
 			temp = self.inicio
 			while temp != None:
-				print (temp.getIndice() , "--" , temp.getNombre() , "--" , temp.getPassword())
+				print (temp.getCarnet() , "--" , temp.getIP() , "--" , temp.getMsj())
 				temp = temp.siguiente
 
 	def mostrarFinInicio(self):
@@ -67,7 +67,7 @@ class ListaDobleUsuarios(object):
 		else:
 			temp = self.fin
 			while temp != None:
-				print (temp.getIndice() , "--" , temp.getNombre() , "--" , temp.getPassword())
+				print (temp.getCarnet() , "--" , temp.getIP() , "--" , temp.getMsj())
 				temp = temp.anterior			
 
 	def eliminarIndice(self, indice):
@@ -95,14 +95,14 @@ class ListaDobleUsuarios(object):
 				self.fin = temp.anterior
 				self.fin.siguiente = None
 
-	def verificarUsuario(self, nombre, password):
+	"""def verificarUsuario(self, nombre, password):
 		usuario = self.buscar(nombre)
 		if (nombre == usuario.getNombre()) and ( password == usuario.getPassword()):
 			print ("Usuario " + usuario.getNombre() + " correcto")
 			return True
 		else:
 			print ("Usuario " + usuario.getNombre() + " incorrecto")
-			return False
+			return False"""
 
 	def graficar(self):
 		self.grafo = "digraph G {\n" + "graph [rankdir = TB];\n" + "node [shape = record,height=.1];  {\n"
@@ -113,8 +113,9 @@ class ListaDobleUsuarios(object):
 			temp = self.inicio
 			i = 0
 			while temp != None:
-				self.grafo += "\"" + str(i) + "\" [label = \"" + "Nombre: " + temp.getNombre() 
-				self.grafo += "\\nContraseña: " + temp.getPassword() + "\"];\n"
+				self.grafo += "\"" + str(i) + "\" [label = \"" + "Carnet: " + temp.getCarnet() 
+				self.grafo += "\\nIP: " + temp.getIP()
+				self.grafo += "\\nMensaje: " + temp.getMsj() + "\"];\n"
 				if i > 0:
 					self.grafo +=  "\"" + str(i - 1) + "\" -> \"" + str(i) + "\" ;\n"
 					self.grafo +=  "\"" + str(i) + "\" -> \"" + str(i - 1) + "\" ;\n"
@@ -122,32 +123,9 @@ class ListaDobleUsuarios(object):
 				temp = temp.siguiente
 				i = i + 1
 
-		self.grafo += "} labelloc=\"t\"; label=\" LISTA DOBLE USUARIOS\";}"
+		self.grafo += "} labelloc=\"t\"; label=\" LISTA DOBLE\";}"
 		print(self.grafo)
 		src = Source(self.grafo)
 		src.format = "png"
-		src.render('test-output/ListaDobleUsuarios', view = True)
+		src.render('test-output/ListaDoble', view = True)
 #**************************************************************************#
-#************************* METODOS PARA LA MATRIZ *************************#
-	#******************** INSERCIÓN ********************#
-	def insertarMatrizLDU(self, nombre, dia, mes, anio, evento, desc, direc, hora) :
-		usuario = self.buscar(nombre)
-		#print(usuario.getIndice())
-		if nombre == usuario.getNombre():
-			usuario.insertarMatriz(dia, mes, anio, evento, desc, direc, hora)
-			print("Nodo insertado en Lista: " + str(dia) + "--" + mes + "--" + anio)
-	#******************** ELIMINACION ********************#
-	def eliminarMatrizLDU(self, nombre, anio, mes, dia, evento):
-		usuario = self.buscar(nombre)
-		#print(usuario.getIndice())
-		if nombre == usuario.getNombre():
-			usuario.eliminarMatriz(anio, mes, dia, evento)
-			print("Nodo eliminado en Lista: " + str(dia) + "--" + mes + "--" + anio)
-	#******************** GRAFICAR ********************#
-	def graficarMatrizLDU(self, nombre, anio, mes, dia):
-		usuario = self.buscar(nombre)
-		print(str(usuario.getNombre()))
-		if nombre == usuario.getNombre():
-			usuario.graficarMatriz()
-			usuario.graficarLista(anio, mes)
-			usuario.graficarHash(anio, mes, dia)
