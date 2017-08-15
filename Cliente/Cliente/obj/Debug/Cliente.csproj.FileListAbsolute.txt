@@ -1,0 +1,15 @@
+C:\Users\ana_j\Documents\GitHub\Practica1_2s2017_201212828\Cliente\Cliente\bin\Debug\Cliente.exe.config
+C:\Users\ana_j\Documents\GitHub\Practica1_2s2017_201212828\Cliente\Cliente\bin\Debug\Cliente.exe
+C:\Users\ana_j\Documents\GitHub\Practica1_2s2017_201212828\Cliente\Cliente\bin\Debug\Cliente.pdb
+C:\Users\ana_j\Documents\GitHub\Practica1_2s2017_201212828\Cliente\Cliente\obj\Debug\Cliente.csprojResolveAssemblyReference.cache
+C:\Users\ana_j\Documents\GitHub\Practica1_2s2017_201212828\Cliente\Cliente\obj\Debug\Cliente.Properties.Resources.resources
+C:\Users\ana_j\Documents\GitHub\Practica1_2s2017_201212828\Cliente\Cliente\obj\Debug\Cliente.csproj.GenerateResource.Cache
+C:\Users\ana_j\Documents\GitHub\Practica1_2s2017_201212828\Cliente\Cliente\obj\Debug\Cliente.exe
+C:\Users\ana_j\Documents\GitHub\Practica1_2s2017_201212828\Cliente\Cliente\obj\Debug\Cliente.pdb
+C:\Users\ana_j\Documents\GitHub\Practica1_2s2017_201212828\Cliente\Cliente\obj\Debug\Cliente.Principal.resources
+C:\Users\ana_j\Documents\GitHub\Practica1_2s2017_201212828\Cliente\Cliente\obj\Debug\Cliente.Dashboard.resources
+C:\Users\ana_j\Documents\GitHub\Practica1_2s2017_201212828\Cliente\Cliente\obj\Debug\Cliente.Mensajes.resources
+C:\Users\ana_j\Documents\GitHub\Practica1_2s2017_201212828\Cliente\Cliente\obj\Debug\Cliente.Reportes.resources
+C:\Users\ana_j\Documents\GitHub\Practica1_2s2017_201212828\Cliente\Cliente\obj\Debug\Cliente.EnviarMensajes.resources
+C:\Users\ana_j\Documents\GitHub\Practica1_2s2017_201212828\Cliente\Cliente\obj\Debug\Cliente.ColaMensajes.resources
+C:\Users\ana_j\Documents\GitHub\Practica1_2s2017_201212828\Cliente\Cliente\obj\Debug\Cliente.RespuestaMensajes.resources
