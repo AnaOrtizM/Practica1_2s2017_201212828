@@ -18,3 +18,4 @@ class NodoLD(object):
 
 	def getMsj(self):
 		return self.mensaje
+		

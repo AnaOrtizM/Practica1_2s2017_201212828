@@ -1,0 +1,9 @@
+digraph G {
+graph [rankdir = UD];
+node [shape = doublecircle,height=.1];  {
+"0" [label = "Dato: 8"];
+"1" [label = "Dato: 7"];
+"0" -> "1" ;
+"2" [label = "Dato: +"];
+"1" -> "2" ;
+} labelloc="t"; label=" PILA";}

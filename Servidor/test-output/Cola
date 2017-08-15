@@ -1,0 +1,7 @@
+digraph G {
+graph [rankdir = UD];
+node [shape = oval,height=.1];  {
+"0" [label = "Carnet: 201212829\nIP: 192.168.0.5\nMsj: ((4*5)+(6*7))"];
+"1" [label = "Carnet: 201401527\nIP: 192.168.0.6\nMsj: (((3+1)*5)+7)"];
+"0" -> "1" ;
+} labelloc="t"; label=" COLA";}

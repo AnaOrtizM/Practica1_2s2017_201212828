@@ -1,4 +1,4 @@
-from graphviz import Digraph
+from graphviz import Source
 from .NodoCola import NodoCola
 
 class Cola(object):
@@ -14,8 +14,8 @@ class Cola(object):
 		else:
 			return False
 
-	def queue(self, dato):
-		nuevo = NodoCola(self.indice, dato)
+	def queue(self, carnet, ip, mensaje):
+		nuevo = NodoCola(self.indice, carnet, ip, mensaje)
 
 		if self.estaVacia() == True:
 			self.inicio = self.fin = nuevo
@@ -31,21 +31,21 @@ class Cola(object):
 		else:
 			temp = self.inicio
 			while temp != None:
-				print (temp.getIndice() , "--" , temp.getDato())
+				print (temp.getIP() , "--" , temp.getMensaje())
 				temp = temp.siguiente
 
-	def dequeue(self, dato):
+	def dequeue(self, carnet):
 		if self.estaVacia() == False:
 			temp = self.inicio
 			self.inicio = self.inicio.siguiente
 			if self.estaVacia() == True:
 				self.fin = None
 			self.indice = self.indice - 1
-			print ("Dato " , str(temp.getDato()) , "eliminado")
-		return temp.getDato()
+			print ("Dato " , str(temp.getCarnet()) , "eliminado")
+		return temp.getCarnet()
 
 	def graficar(self):
-		dot = Digraph(comment='Cola',format='jpg',node_attr={'shape':'circle'},name='Cola')
+		"""dot = Digraph(comment='Cola',format='jpg',node_attr={'shape':'circle'},name='Cola')
 		dot.graph_attr['rankdir']='UD'
 		dot  #doctest: +ELLIPSIS
 		temp = self.inicio
@@ -65,4 +65,27 @@ class Cola(object):
 				print (temp.getDato())
 				temp = temp.siguiente
 			print(dot.source)
-			dot.render('test-output/Cola', view = True)
+			dot.render('test-output/Cola', view = True)"""
+
+		self.grafo = "digraph G {\n" + "graph [rankdir = UD];\n" + "node [shape = oval,height=.1];  {\n"
+
+		if self.estaVacia() == True:
+			self.grafo += "\"ColaVacia\" [label = \"Cola Vacia\"]"
+		else:
+			temp = self.inicio
+			i = 0
+			while temp != None:
+				self.grafo += "\"" + str(i) + "\" [label = \"" + "Carnet: " +str(temp.getCarnet())
+				self.grafo += "\\nIP: " + str(temp.getIP())
+				self.grafo += "\\nMsj: " + str(temp.getMensaje()) + "\"];\n"
+				if i > 0:
+					self.grafo +=  "\"" + str(i - 1) + "\" -> \"" + str(i) + "\" ;\n"
+
+				temp = temp.siguiente
+				i = i + 1
+
+		self.grafo += "} labelloc=\"t\"; label=\" COLA\";}"
+		print(self.grafo)
+		src = Source(self.grafo)
+		src.format = "png"
+		src.render('test-output/Cola', view = True)

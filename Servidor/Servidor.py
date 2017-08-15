@@ -61,6 +61,10 @@ ld.graficar()
 #******************************************#
 
 #************* METODOS  COLA  *************#
+cl.queue("201212829", "192.168.0.5", "((4*5)+(6*7))")
+cl.queue("201401527", "192.168.0.6", "(((3+1)*5)+7)")
+cl.mostrar()
+cl.graficar()
 """@app.route('/queueCola',methods=['POST']) 
 #@app.route('/insertarLista') 
 def queueCola():
@@ -83,11 +87,16 @@ def dequeueCola():
 #@app.route('/eliminarLista') 
 def graficarCola():
 	cl.graficar()
-	return "Cola Graficada" 
+	return "Cola Graficada" """
 #******************************************#
 
 #************* METODOS  PILA  *************#
-@app.route('/pushPila',methods=['POST']) 
+pl.push(8)
+pl.push(7)
+pl.push("+")
+pl.mostrar()
+pl.graficar()
+"""@app.route('/pushPila',methods=['POST']) 
 #@app.route('/insertarLista') 
 def pushPila():
 	#parametro = str(request.args['palabra'])

@@ -1,5 +1,5 @@
 digraph G {
-graph [rankdir = TB];
+graph [rankdir = LR];
 node [shape = record,height=.1];  {
 "0" [label = "Carnet: 201214505\nIP: 192.168.0.3\nMensaje: (2+2)"];
 "1" [label = "Carnet: 201348796\nIP: 192.168.0.10\nMensaje: (4*5)"];

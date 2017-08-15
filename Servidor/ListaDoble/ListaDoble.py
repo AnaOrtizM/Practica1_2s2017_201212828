@@ -105,7 +105,7 @@ class ListaDoble(object):
 			return False"""
 
 	def graficar(self):
-		self.grafo = "digraph G {\n" + "graph [rankdir = TB];\n" + "node [shape = record,height=.1];  {\n"
+		self.grafo = "digraph G {\n" + "graph [rankdir = LR];\n" + "node [shape = record,height=.1];  {\n"
 
 		if self.estaVacia() == True:
 			self.grafo += "\"ListaVacia\" [label = \"Lista Vacia\"]"

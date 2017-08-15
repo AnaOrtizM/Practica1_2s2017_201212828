@@ -76,28 +76,7 @@ class ListaSimple(object):
 				temp = temp.siguiente				
 
 	def graficar(self):
-		"""dot = Digraph(comment='Lista Simple',format='jpg',node_attr={'shape':'box'},name='Lista Simple')
-		dot.graph_attr['rankdir']='UD'
-		dot  #doctest: +ELLIPSIS
-		temp = self.inicio
-		if temp == None:
-			print ("Lista vacia")
-			dot.node("1","Lista Vacia")
-			dot.render('test-output/ListaSimple', view = True)
-		else:
-			print (temp.getIndice())
-			print (temp.getCarnet())
-			while temp != None:				
-				dot.node(str(temp.getIndice()), str(temp.getCarnet()), str(temp.getIP()))
-				if temp.siguiente != None:
-					dot.node(str(temp.siguiente.getIndice()), str(temp.siguiente.getCarnet()), str(temp.getIP()))
-					dot.edge(str(temp.getIndice()), str(temp.siguiente.getIndice()), constraint='false')
-				print (temp.getIndice())
-				print (temp.getCarnet())
-				temp = temp.siguiente
-			print(dot.source)
-			dot.render('test-output/ListaSimple', view = True)"""
-		self.grafo = "digraph G {\n" + "graph [rankdir = TB];\n" + "node [shape = record,height=.1];  {\n"
+		self.grafo = "digraph G {\n" + "graph [rankdir = LR];\n" + "node [shape = record,height=.1];  {\n"
 
 		if self.estaVacia() == True:
 			self.grafo += "\"ListaVacia\" [label = \"Lista Vacia\"]"
